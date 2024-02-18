@@ -74,18 +74,21 @@
           </div>
           <?php if (isset($_POST['discord_id'])) {
             $userDiscordData = getDiscordGuildMember($_POST['discord_id']);
-            $userWarnings = getUserWranings($_POST['discord_id']);
+            if(!isset($userDiscordData['guildMember']->user->id)){
+              echo '<div class="row ps-2 pt-2 pe-2 ps-md-5 pe-md-5 pt-md-5 h4">User not found in the server</div>';
+            } else {
+              $userWarnings = getUserWranings($_POST['discord_id']);
             ?>
           <div class="row ps-2 pt-2 pe-2 ps-md-5 pe-md-5 pt-md-5">
             <div class="col-12 col-lg-4">
               <div class="card shadow">
                 <div class="card-header text-primary h4 text-center">
-                  <?php echo $userDiscordData['guildMember']->user->global_name ?>
+                  <?php echo isset($userDiscordData['guildMember']->user->global_name) ? $userDiscordData['guildMember']->user->global_name : $userDiscordData['guildMember']->user->username  ?>
                 </div>
                 <div class="card-body">
                   <div class="text-center">
                     
-                  <img src="https://cdn.discordapp.com/avatars/<?php echo $userDiscordData['guildMember']->user->id ?>/<?php echo $userDiscordData['guildMember']->user->avatar ?>.png" class="rounded-circle">
+                  <img src="https://cdn.discordapp.com/avatars/<?php echo $userDiscordData['guildMember']->user->id ?>/<?php echo $userDiscordData['guildMember']->user->avatar ?>.png" class="rounded-circle" onError="this.onerror=null;this.src='assets/img/noavatar.png';" height="150px">
                   </div>
                     <p class="card-text">
                     <ul>
@@ -145,7 +148,9 @@
 
             </div>
           </div>
-          <?php } ?>
+          <?php }
+            saveLog('user_info', $_SESSION['wfmb_admin_dID'], 'info about: '.$_POST['discord_id'], $db);
+          } ?>
         </div>
 
       </div>
