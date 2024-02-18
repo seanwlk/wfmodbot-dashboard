@@ -199,8 +199,9 @@
                 },
               ]
             },
+            pageLength: 20,
             order: [],
-            sort: false,
+            sort: true
           });
           $(el).removeClass('d-none');
         });
