@@ -32,7 +32,7 @@
   function getUserWranings($id){
     global $MODERATED_GUILD;
     global $db;
-    $q = $db->prepare("SELECT warnings.reason, users.name AS moderator
+    $q = $db->prepare("SELECT warnings.id, warnings.reason, users.name AS moderator
     FROM warnings
     LEFT JOIN users ON users.discord_id = warnings.moderator
     WHERE warnings.discord_id = ? AND warnings.guild = ?");
