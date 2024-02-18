@@ -1,0 +1,125 @@
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+  border-radius: 3px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  /*background: #f1f1f1;*/
+  border-radius: 3px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+  border-radius: 3px;
+}
+
+.content-wrapper {
+  margin-left: 0px;
+}
+
+.sidebar-menu {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  height: calc(100vh - 40px);
+  width: 250px;
+  background: linear-gradient(0deg, #3d5ee2 0%, #1c72c9 100%);
+  /*border-left: 1px solid #d1d1d146;*/
+  display: none;
+  /*overflow-y: auto;*/
+  border-radius: 10px;
+}
+
+.show-sidebar-menu {
+  display: block;
+  z-index: 999;
+}
+
+.page-content {
+  width: 100%;
+  height: calc(100vh - 76px);
+  background: linear-gradient(0deg, #b2b2b6 0%, #e0e5eb 100%);
+  border-radius: 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.app-list {
+  margin-top: 30px;
+  padding-left: 6px;
+  padding-right: 6px;
+  overflow-y: auto;
+  height: calc(100vh - 200px);
+  display: flex;
+  flex-direction: column;
+}
+
+.app-item {
+  position: relative;
+  display: inline-flex;
+  text-decoration: none;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: white;
+  border-radius: 10px;
+}
+
+.app-item.active {
+  background-color: rgb(0, 71, 163);
+}
+
+.app-sublist {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 10px;
+  background-color: aliceblue;
+}
+
+.app-subitem {
+  position: relative;
+  display: inline-flex;
+  text-decoration: none;
+  padding-left: 15px;
+  padding-right: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: black;
+  border-radius: 10px;
+}
+
+.app-subitem.active {
+  background-color: rgb(38, 115, 216);
+}
+
+.graph-row {
+  min-height: 400px;
+}
+
+.cursor-move {
+  cursor: move;
+}
+
+@media (min-width: 768px) {
+  .sidebar-menu {
+    display: block;
+  }
+  .content-wrapper {
+    margin-left: 270px;
+  }
+}
