@@ -75,7 +75,7 @@
           <?php if (isset($_POST['discord_id'])) {
             $userDiscordData = getDiscordGuildMember($_POST['discord_id']);
             if(!isset($userDiscordData['guildMember']->user->id)){
-              echo '<div class="row ps-2 pt-2 pe-2 ps-md-5 pe-md-5 pt-md-5 h4">User not found in the server</div>';
+              echo '<div class="row ps-2 pt-2 pe-2 ps-md-5 pe-md-5 pt-md-5 h4"><div class="col-12">User not found in the server</div></div>';
             } else {
               $userWarnings = getUserWranings($_POST['discord_id']);
             ?>
