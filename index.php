@@ -141,7 +141,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-12 col-md-4">
+            <div class="col-12 col-md-4 mt-4 mt-md-0">
               <div class="card shadow h-100">
                 <div class="card-header">
                   Most warned users
@@ -180,7 +180,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-6 mt-4 mt-md-0">
               <div class="card shadow h-100">
                 <div class="card-header">
                   WFModBot Commands
