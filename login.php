@@ -67,37 +67,32 @@ if (isset($_COOKIE['wfmb_auth_key']) && isset($_COOKIE['wfmb_remToken']) && isse
     <link href="./assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="./assets/css/style.css" rel="stylesheet">
   </head>
-  <body>
-
-<body class="bg-primary">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="card border-0 shadow-lg my-5"  style="width: 500px;">
-        <div class="card-body">
-          <!-- Nested Row within Card Body -->
-          <div class="row text-center">
+  <body class="bg-primary">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="card border-0 shadow-lg my-5"  style="width: 500px;">
+          <div class="card-body">
+            <!-- Nested Row within Card Body -->
+            <div class="row text-center">
               <div class="p-5">
                 <div class="text-center">
                   <h1 class="h4 text-gray-900 mb-4">Login to WFModBot Dashboard</h1>
                 </div>
-                  <img class="mx-auto d-block" src="assets/img/wfmod.png">
-                  <hr>
-                  <?php include('includes/session_messages.php') ?>
-                  <?php //include_once('includes/flash_messages.php');?>
-                  <a href="https://discordapp.com/api/oauth2/authorize?client_id=604927756861440000&redirect_uri=<?php echo urlencode(APP_URL."/oauth2.php")?>&response_type=code&scope=identify" class="btn btn-primary mx-auto">
-                    <i class="fab fa-discord fa-fw"></i> Login with Discord
-                  </a>
-                </form>
+                <img class="mx-auto d-block" src="assets/img/wfmod.png">
+                <hr>
+                <?php include('includes/session_messages.php') ?>
+                <a href="https://discordapp.com/api/oauth2/authorize?client_id=604927756861440000&redirect_uri=<?php echo urlencode(APP_URL."/oauth2.php")?>&response_type=code&scope=identify" class="btn btn-primary mx-auto">
+                  <i class="fab fa-discord fa-fw"></i> Login with Discord
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <script src="./assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="./assets/js/main.js"></script>
+    <script src="./assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/main.js"></script>
 
-</body>
-
+  </body>
 </html>
