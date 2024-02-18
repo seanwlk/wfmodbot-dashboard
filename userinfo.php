@@ -32,7 +32,10 @@
   function getUserWranings($id){
     global $MODERATED_GUILD;
     global $db;
-    $q = $db->prepare("SELECT * FROM warnings WHERE discord_id = ? AND guild = ?");
+    $q = $db->prepare("SELECT warnings.reason, users.name AS moderator
+    FROM warnings
+    LEFT JOIN users ON users.discord_id = warnings.moderator
+    WHERE warnings.discord_id = ? AND warnings.guild = ?");
     $q->execute([$id,$MODERATED_GUILD]);
     return $q->fetchall(PDO::FETCH_ASSOC);
   }
