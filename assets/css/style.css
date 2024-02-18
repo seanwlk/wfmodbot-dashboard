@@ -53,6 +53,15 @@
   overflow-x: hidden;
 }
 
+[data-bs-theme=dark] .page-content {
+  width: 100%;
+  height: calc(100vh - 76px);
+  background: linear-gradient(0deg, #2f2f30 0%, #19191a 100%);
+  border-radius: 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
 .app-list {
   margin-top: 30px;
   padding-left: 6px;

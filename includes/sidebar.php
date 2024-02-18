@@ -67,7 +67,7 @@
           <div class="app-sublist">
             <div class="form-check form-switch">
               <input class="form-check-input" type="checkbox" role="switch" id="themeSelector" <?php echo THEME == 'dark' ? 'checked' : ''?>>
-              <label class="form-check-label" for="themeSelector">Dark theme</label>
+              <label class="form-check-label text-dark" for="themeSelector">Dark theme</label>
               <script>
               document.getElementById("themeSelector").addEventListener('change', function() {
                 if (this.checked) {
