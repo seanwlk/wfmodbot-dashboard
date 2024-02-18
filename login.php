@@ -82,6 +82,7 @@ if (isset($_COOKIE['wfmb_auth_key']) && isset($_COOKIE['wfmb_remToken']) && isse
                 </div>
                   <img class="mx-auto d-block" src="assets/img/wfmod.png">
                   <hr>
+                  <?php include('includes/session_messages.php') ?>
                   <?php //include_once('includes/flash_messages.php');?>
                   <a href="https://discordapp.com/api/oauth2/authorize?client_id=604927756861440000&redirect_uri=<?php echo urlencode(APP_URL."/oauth2.php")?>&response_type=code&scope=identify" class="btn btn-primary mx-auto">
                     <i class="fab fa-discord fa-fw"></i> Login with Discord
