@@ -88,7 +88,7 @@
               <input type="hidden" name="action" value="send-message">
               <div class="mb-3">
                 <label for="channelId" class="form-label">Channel ID / User ID</label>
-                <input name="channel" type="text" class="form-control" id="channelId" placeholder="ID" value="<?php isset($_GET['user']) ? $_GET['user'] : ''?>">
+                <input name="channel" type="text" class="form-control" id="channelId" placeholder="ID" value="<?php echo isset($_GET['user']) ? $_GET['user'] : ''?>">
               </div>
               <div class="mb-3">
                 <label for="message" class="form-label">Example textarea</label>
