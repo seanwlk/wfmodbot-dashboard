@@ -7,7 +7,7 @@ define('THEME', isset($_COOKIE['wfmb_theme']) && ($_COOKIE['wfmb_theme'] == "dar
 
 function dbInstance(){
   try {
-    return new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME, DB_USER, DB_PASS);
+    return new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME.";charset=utf8mb4", DB_USER, DB_PASS);
   } catch (Exception $e) {
     header("Location: error.php");
     exit;
