@@ -61,7 +61,7 @@
       </div>
       <div id="profileAccordion" class="accordion-collapse collapse">
         <div class="app-sublist">
-          <a href="#" class="app-subitem">
+          <a href="profile.php" class="app-subitem">
             <span class="material-symbols-outlined ms-2">person</span><?php echo isset($_SESSION['wfmb_username']) ? $_SESSION['wfmb_username'] : ''?>
           </a>
           <div class="app-sublist">
