@@ -146,22 +146,6 @@
     <script src="./assets/SweetAlert/sweetalert.js"></script>
     <script src="./assets/js/main.js"></script>
     <script>
-      $(".action-button").on('click', function(event){
-        let id = $(this).data('id');
-        let action = $(this).data('action');
-        var btn = $(this);
-        if (action == 'delete') {
-          confirmChoice("Are you sure you want to delete this warning?", function(){
-            $.post('warnings.php', { id: id, action: 'delete-warning'}, function(data){
-              if (data.result == 'success'){
-                btn.closest('tr').remove();
-                return popupMessage('success', data.message);
-              }
-              return popupMessage('error', data.message);
-            })
-          })
-        }
-      });
       $('#showWarnName').change(function() {
         $.post('profile.php', {value: this.checked, action: 'set-showwarnname'}, function(data){
           if (data.result == 'success') {
@@ -170,7 +154,7 @@
             return popupMessage('error', data.message)
           }
         })
-    });
+      });
     </script>
   </body>
 </html>
