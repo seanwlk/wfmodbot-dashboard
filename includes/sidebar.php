@@ -41,6 +41,11 @@
         <span class="material-symbols-outlined me-2">group</span>User info
       </a>
       <?php } ?>
+      <?php if (checkPerms('moderator')) { ?>
+      <a href="sendmessage.php" class="app-item <?php echo CURRENT_PAGE == '/sendmessage.php' ? 'active' : ''?>">
+        <span class="material-symbols-outlined me-2">send</span>Send Message
+      </a>
+      <?php } ?>
       <?php if (checkPerms('admin')) { ?>
       <hr class="text-info m-0 ms-2 me-2">
       <div class="text-center text-white small mt-2">ADMIN</div>

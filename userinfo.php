@@ -102,7 +102,7 @@
                       <li><?php echo $userDiscordData['guildMember']->mute ? 'Muted in audio channels' : "Not muted in audio channels" ?></li>
                       <li><?php echo $userDiscordData['guildMember']->deaf ? 'Deafened in audio channels' : "Not deafened in audio channels" ?></li>
                     </ul>
-                    <a href="#" class="btn btn-outline-primary">Send DM</a>
+                    <a href="sendmessage.php?user=<?php echo $userDiscordData['guildMember']->user->id ?>" class="btn btn-outline-primary">Send DM</a>
                   </p>
                 </div>
                 <div class="card-footer text-body-secondary">
