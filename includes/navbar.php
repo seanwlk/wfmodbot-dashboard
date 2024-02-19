@@ -9,7 +9,7 @@
 
         <li class="nav-item ">
           <span class="me-2"><?php echo isset($_SESSION['wfmb_username']) ? $_SESSION['wfmb_username'] : ''?></span>
-            <img src="https://cdn.discordapp.com/avatars/159015952346906624/<?php echo isset($_SESSION['wfmb_avatar']) ? $_SESSION['wfmb_avatar'] : ''?>.png" class="p-0 rounded-circle" height="40px">
+            <img src="https://cdn.discordapp.com/avatars/<?php echo isset($_SESSION['wfmb_admin_dID']) ? $_SESSION['wfmb_admin_dID'] : ''?>/<?php echo isset($_SESSION['wfmb_avatar']) ? $_SESSION['wfmb_avatar'] : ''?>.png" class="p-0 rounded-circle" height="40px">
         </li>
       </ul>
     </div>
