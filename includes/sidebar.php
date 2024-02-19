@@ -47,7 +47,7 @@
       <a href="managemods.php" class="app-item <?php echo CURRENT_PAGE == '/managemods.php' ? 'active' : ''?>">
         <span class="material-symbols-outlined me-2">admin_panel_settings</span>Moderators
       </a>
-      <a href="#" class="app-item <?php echo CURRENT_PAGE == '/managetemplate.php' ? 'active' : ''?>">
+      <a href="warntemplates.php" class="app-item <?php echo CURRENT_PAGE == '/warntemplates.php' ? 'active' : ''?>">
         <span class="material-symbols-outlined me-2">edit_note</span>Warn templates
       </a>
       <a href="modlogs.php" class="app-item <?php echo CURRENT_PAGE == '/modlogs.php' ? 'active' : ''?>">
