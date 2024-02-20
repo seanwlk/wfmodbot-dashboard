@@ -1,5 +1,6 @@
 <?php 
 if ( !isset($_SESSION['wfmb_loggedin']) ||  !isset($_SESSION['wfmb_admin_type'])) {
+  $_SESSION['wfmb_redirect'] = CURRENT_PAGE;
   header('Location:login.php');
 }
 if (isset($_SESSION['wfmb_loggedin'])){
