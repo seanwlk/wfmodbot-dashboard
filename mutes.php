@@ -66,7 +66,7 @@
             <?php foreach ($mutes as $mute) {?>
               <tr>
                 <td><?php echo $mute['discord_id']?></td>
-                <td><?php echo substr($mute['username'], 1, -1)?></td>
+                <td><?php echo $mute['username']?></td>
                 <td><?php echo $mute['moderator']?></td>
                 <td><?php echo $mute['when_unmute'] != "permanent" ? gmdate("Y-m-d H:i:s", $mute['when_unmute']) : "Permanent" ?></td>
                 <td class="text-nowrap">

@@ -75,8 +75,8 @@
               <tr>
                 <td><?php echo $warning['id']?></td>
                 <td><?php echo $warning['discord_id']?></td>
-                <td><?php echo substr($warning['username'], 1, -1)?></td>
-                <td class="text-wrap"><?php echo htmlentities(substr($warning['reason'], 1, -1)) ?></td>
+                <td><?php echo $warning['username']?></td>
+                <td class="text-wrap"><?php echo htmlentities($warning['reason']) ?></td>
                 <td><?php echo $warning['moderator']?></td>
                 <td><?php echo gmdate("Y-m-d H:i:s", $warning['date'])?></td>
                 <?php if(checkPerms('admin')){ ?>

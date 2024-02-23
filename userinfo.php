@@ -137,7 +137,7 @@
                       <?php foreach($userWarnings as $warn) { ?>
                         <tr>
                           <td><?php echo $warn['moderator'] ?></td>
-                          <td><?php echo htmlentities(substr($warn['reason'], 1, -1)) ?> </td>
+                          <td><?php echo htmlentities($warn['reason']) ?> </td>
                           <?php if(checkPerms('admin')){ ?>
                           <td class="text-nowrap">
                             <button class="btn btn-sm btn-danger action-button" data-id="<?php echo $warn['id'] ?>" data-action="delete"><span class="material-symbols-outlined">delete</span></button>

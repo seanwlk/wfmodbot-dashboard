@@ -53,8 +53,8 @@
             <?php foreach ($bans as $ban) {?>
               <tr>
                 <td><?php echo $ban['discord_id']?></td>
-                <td><?php echo substr($ban['username'], 1, -1)?></td>
-                <td><?php echo htmlentities(substr($ban['reason'], 1, -1)) ?></td>
+                <td><?php echo $ban['username']?></td>
+                <td><?php echo htmlentities($ban['reason']) ?></td>
                 <td><?php echo $ban['moderator']?></td>
                 <td><?php echo gmdate("Y-m-d H:i:s", $ban['date'])?></td>
               </tr>
