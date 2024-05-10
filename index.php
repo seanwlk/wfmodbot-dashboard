@@ -236,6 +236,11 @@
                         <td>Deletes said amount of messages</td>
                         <td>[1] User mention or ID (Optional) <br>[2] Amount</td>
                       </tr>
+                      <tr>
+                        <td>reload</td>
+                        <td>Reloads all the configs from db [Admin only]</td>
+                        <td>None</td>
+                      </tr>
                     </tbody>
                   </table>
                   </div>
