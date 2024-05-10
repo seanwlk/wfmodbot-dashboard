@@ -9,6 +9,7 @@ function dbInstance(){
   try {
     return new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME.";charset=utf8mb4", DB_USER, DB_PASS);
   } catch (Exception $e) {
+    $_SESSION['wfmb_failure'] = "Cannot connect to the database";
     header("Location: error.php");
     exit;
   }

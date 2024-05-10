@@ -4,8 +4,6 @@
   //include_once('includes/authvalidate.php');
   $PAGE_TITLE = 'Error';
 
-  $db = dbInstance();
-
 ?>
 <html lang="en" data-bs-theme="<?php echo THEME; ?>">
   <head>
@@ -23,26 +21,19 @@
     <link href="./assets/css/style.css" rel="stylesheet">
   </head>
   <body>
-    <?php include ('includes/sidebar.php') ?>
-    <div class="content-wrapper">
-    <?php include ('includes/navbar.php')?>
-      <div class="container-fluid">
-        
-        <div class="page-content">
-          <div class="d-flex justify-content-center">
-            <span class="p-5 display-1">ERROR</span>
-          </div>
-          <div class="ps-5 pe-5">
-            <?php include('includes/session_messages.php') ?>
-          </div>
-          <div class="d-flex justify-content-center">
-            <a href="index.php">Back to home</a>
-          </div>
+    <div class="container-fluid">
+      <div class="page-content">
+        <div class="d-flex justify-content-center">
+          <span class="p-5 display-1">ERROR</span>
         </div>
-
+        <div class="ps-5 pe-5">
+          <?php include('includes/session_messages.php') ?>
+        </div>
+        <div class="d-flex justify-content-center">
+          <a href="index.php">Back to home</a>
+        </div>
       </div>
     </div>
-
     <script src="./assets/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="./assets/js/jquery-3.7.1.min.js"></script>
     <script src="./assets/DataTables/datatables.min.js"></script>
