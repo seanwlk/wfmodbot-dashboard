@@ -132,7 +132,7 @@
                 <td><?php echo $user['discord_id']?></td>
                 <td><?php echo $user['type']?></td>
                 <td><?php echo $user['ShowWarnName']==1 ? 'Yes' : 'No' ?></td>
-                <td><?php echo isset($user['last_login']) ? gmdate("Y-m-d H:i:s", $user['last_login']) : 'Never' ?></td>
+                <td><?php echo isset($user['last_login']) ? gmdate("Y-m-d H:i:s", $user['last_login']) : '' ?></td>
                 <td class="text-nowrap">
                   <button class="btn btn-sm btn-warning action-button" data-id="<?php echo $user['id'] ?>" data-action="edit"><span class="material-symbols-outlined">edit</span></button>
                   <button class="btn btn-sm btn-danger action-button" data-id="<?php echo $user['id'] ?>" data-action="delete"><span class="material-symbols-outlined">delete</span></button>
@@ -278,7 +278,7 @@
               ]
             },
             pageLength: 20,
-            order: [],
+            order: [[4,'DESC']],
             sort: true
           });
           $(el).removeClass('d-none');
