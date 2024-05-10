@@ -20,7 +20,7 @@
   $warnings =  fastFetch($db,"SELECT count(*) AS amount FROM warnings WHERE guild =".$MODERATED_GUILD,'count');
   $moderators =  fastFetch($db,"SELECT count(*) AS amount FROM userguildaccess WHERE guild =".$MODERATED_GUILD,'count');
   $bans =  fastFetch($db,"SELECT count(*) AS amount FROM bans WHERE guild =".$MODERATED_GUILD,'count');
-  $warningOverviewArray = fastFetch($db,"SELECT users.name as moderator ,count(warnings.moderator) AS amount FROM warnings LEFT JOIN users ON users.discord_id= warnings.moderator WHERE users.name IS NOT NULL AND  guild =".$MODERATED_GUILD." GROUP BY users.name,warnings.moderator",'fetchall');
+  $warningOverviewArray = fastFetch($db,"SELECT users.name as moderator ,count(warnings.moderator) AS amount FROM warnings LEFT JOIN users ON users.discord_id= warnings.moderator WHERE users.enabled = 1 AND users.name IS NOT NULL AND  guild =".$MODERATED_GUILD." GROUP BY users.name,warnings.moderator",'fetchall');
   $activeMutes = fastFetch($db,"SELECT username,date,when_unmute FROM mutes WHERE when_unmute != 'permanent' AND guild =".$MODERATED_GUILD." ORDER BY when_unmute ASC",'fetchall');
   $topwarned = fastFetch($db,"SELECT discord_id,count(discord_id) AS amount FROM warnings WHERE guild =".$MODERATED_GUILD." AND discord_id NOT IN (SELECT discord_id FROM mutes WHERE when_unmute = \"permanent\") GROUP BY discord_id ORDER BY amount DESC LIMIT 5",'fetchall');
 
