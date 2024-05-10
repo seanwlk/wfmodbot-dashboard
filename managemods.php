@@ -54,7 +54,18 @@
         header('Content-type: application/json');
         echo json_encode(array('result' => 'error', 'message' => 'An error occured while editing the user', 'data' => $_POST));
       }
-    }  elseif (isset($_POST['action']) & $_POST['action'] == 'delete-user'){
+    } elseif (isset($_POST['action']) & $_POST['action'] == 'set-user-status'){
+      try {
+        $qResult = $db->prepare("UPDATE users SET enabled = ? WHERE id = ?");
+        $qResult->execute([$_POST['status'],$_POST['id']]);
+        saveLog('set_user_state', $_SESSION['wfmb_admin_dID'], 'User ID: '.$_POST['id'].' - new state: '.($_POST['status'] == '1' ? 'enabled': 'disabled'), $db);
+        header('Content-type: application/json');
+        echo json_encode(array('result' => 'success', 'message' => 'User was successfully '.($_POST['status'] == '1' ? 'enabled': 'disabled'),'data' => $_POST));
+      } catch (\Throwable $th) {
+        header('Content-type: application/json');
+        echo json_encode(array('result' => 'error', 'message' => 'An error occured while trying to change user status', 'data' => $_POST));
+      }
+    } elseif (isset($_POST['action']) & $_POST['action'] == 'delete-user'){
       try {
         $qResult = $db->prepare("SELECT * FROM users WHERE id = ?");
         $qResult->execute([$_POST['id']]);
@@ -125,6 +136,7 @@
                 <td class="text-nowrap">
                   <button class="btn btn-sm btn-warning action-button" data-id="<?php echo $user['id'] ?>" data-action="edit"><span class="material-symbols-outlined">edit</span></button>
                   <button class="btn btn-sm btn-danger action-button" data-id="<?php echo $user['id'] ?>" data-action="delete"><span class="material-symbols-outlined">delete</span></button>
+                  <button class="btn btn-sm btn-<?php echo $user['enabled'] == 1 ? 'success' : 'warning' ?> action-button" data-id="<?php echo $user['id'] ?>" data-current-status="<?php echo $user['enabled'] ?>" data-action="set-status"><span class="material-symbols-outlined">person</span></button>
                 </td>
               </tr>
             <?php } ?>
@@ -205,13 +217,29 @@
         var btn = $(this);
         if (action == 'delete') {
           confirmChoice("Are you sure you want to delete this user?", function(){
-            $.post('managemods.php', { id: id, action: 'delete-user'}, function(data){
+            $.post('managemods.php', { id: id, action: 'delete-user', status: newState}, function(data){
               if (data.result == 'success'){
                 btn.closest('tr').remove();
                 return popupMessage('success', data.message);
               }
               return popupMessage('error', data.message);
             })
+          })
+        } else if (action == 'set-status') {
+          let newState = btn.data('current-status') == 1 ? 0 : 1;
+          $.post('managemods.php', { id: id, action: 'set-user-status', status: newState}, function(data){
+            if (data.result == 'success'){
+              btn.data('current-status',newState);
+              btn.removeClass('btn-success');
+              btn.removeClass('btn-warning');
+              if (newState == 1){
+                btn.addClass('btn-success');
+              } else {
+                btn.addClass('btn-warning');
+              }
+              return popupMessage('success', data.message);
+            }
+            return popupMessage('error', data.message);
           })
         } else {
           $.post('managemods.php',{ id: id, action: 'get-user'},function(data){
