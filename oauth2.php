@@ -42,7 +42,7 @@ if (isset($_GET['code'])) {
 
 	$db = dbInstance();
 	
-	$qResult = $db->prepare("SELECT * FROM users WHERE discord_id = ?");
+	$qResult = $db->prepare("SELECT * FROM users WHERE discord_id = ? AND enabled = 1");
 	$qResult->execute([$user->id]);
 	$userDb = $qResult->fetch(PDO::FETCH_ASSOC);
 
