@@ -18,7 +18,7 @@
   $db = dbInstance();
 
   $warnings =  fastFetch($db,"SELECT count(*) AS amount FROM warnings WHERE guild =".$MODERATED_GUILD,'count');
-  $moderators =  fastFetch($db,"SELECT count(*) AS amount FROM userguildaccess WHERE guild =".$MODERATED_GUILD,'count');
+  $moderators =  fastFetch($db,"SELECT count(*) AS amount FROM userguildaccess uga LEFT JOIN users ON users.discord_id = uga.discord_id WHERE users.enabled = 1 AND uga.guild = ".$MODERATED_GUILD,'count');
   $bans =  fastFetch($db,"SELECT count(*) AS amount FROM bans WHERE guild =".$MODERATED_GUILD,'count');
   $warningOverviewArray = fastFetch($db,"SELECT users.name as moderator ,count(warnings.moderator) AS amount FROM warnings LEFT JOIN users ON users.discord_id= warnings.moderator WHERE users.enabled = 1 AND users.name IS NOT NULL AND  guild =".$MODERATED_GUILD." GROUP BY users.name,warnings.moderator",'fetchall');
   $activeMutes = fastFetch($db,"SELECT username,date,when_unmute FROM mutes WHERE when_unmute != 'permanent' AND guild =".$MODERATED_GUILD." ORDER BY when_unmute ASC",'fetchall');
