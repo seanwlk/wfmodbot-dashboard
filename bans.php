@@ -9,8 +9,7 @@
   $sqlQuery = "SELECT bans.id, bans.discord_id, bans.username, bans.reason, bans.date, users.name AS moderator
   FROM bans
   LEFT JOIN users ON users.discord_id = bans.moderator 
-  WHERE guild = ".$MODERATED_GUILD
-  ." ORDER BY id DESC";
+  WHERE guild = '$MODERATED_GUILD' ORDER BY id DESC";
   $r = $db->prepare($sqlQuery);
   $r->execute([]);
   $bans = $r->fetchAll(PDO::FETCH_ASSOC);

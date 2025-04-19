@@ -1,6 +1,8 @@
 <?php
 define('APP_URL', 'https://');
 define('DB_HOST', 'localhost');
+define('DB_DIALECT', 'pgsql');
+define('DB_PORT', '');
 define('DB_NAME', '');
 define('DB_USER', '');
 define('DB_PASS', '');

@@ -16,7 +16,7 @@
       } else {
         $val = 0;
       }
-      $qResult = $db->prepare("UPDATE users SET ShowWarnName = ? WHERE discord_id = ?");
+      $qResult = $db->prepare("UPDATE users SET showwarnname = ? WHERE discord_id = ?");
       $qResult->execute([$val,$_SESSION['wfmb_admin_dID']]);
       if ($qResult){
         header('Content-type: application/json');
@@ -126,7 +126,7 @@
                   </ul>
                   <h5 class="pt-2">Configs</h5>
                   <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="showWarnName" <?php echo $userDb['ShowWarnName'] == 1 ? 'checked' : '' ?>>
+                    <input class="form-check-input" type="checkbox" role="switch" id="showWarnName" <?php echo $userDb['showwarnname'] == 1 ? 'checked' : '' ?>>
                     <label class="form-check-label" for="showWarnName">Show moderator name in user warnings</label>
                   </div>
                 </div>

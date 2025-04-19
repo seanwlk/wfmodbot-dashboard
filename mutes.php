@@ -22,8 +22,7 @@
   $sqlQuery = "SELECT mutes.id, mutes.discord_id, mutes.username, mutes.when_unmute, mutes.date, users.name AS moderator
   FROM mutes
   LEFT JOIN users ON users.discord_id = mutes.moderator 
-  WHERE guild = ".$MODERATED_GUILD
-  ." ORDER BY mutes.id DESC";
+  WHERE guild = '$MODERATED_GUILD' ORDER BY mutes.id DESC";
   $r = $db->prepare($sqlQuery);
   $r->execute([]);
   $mutes = $r->fetchAll(PDO::FETCH_ASSOC);

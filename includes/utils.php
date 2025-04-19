@@ -7,9 +7,10 @@ define('THEME', isset($_COOKIE['wfmb_theme']) && ($_COOKIE['wfmb_theme'] == "dar
 
 function dbInstance(){
   try {
-    return new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME.";charset=utf8mb4", DB_USER, DB_PASS);
+    //return new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME.";charset=utf8mb4", DB_USER, DB_PASS);
+    return new PDO(DB_DIALECT.":host=".DB_HOST.";port=".DB_PORT.";dbname=".DB_NAME, DB_USER, DB_PASS);
   } catch (Exception $e) {
-    $_SESSION['wfmb_failure'] = "Cannot connect to the database";
+    $_SESSION['wfmb_failure'] = "Cannot connect to the database: ".$e->getMessage();
     header("Location: error.php");
     exit;
   }
@@ -59,10 +60,10 @@ function clearAuthCookie() {
 	unset($_COOKIE['wfmb_auth_key']);
 	unset($_COOKIE['wfmb_remToken']);
 	unset($_COOKIE['wfmb_loginCheck']);
-	setcookie('wfmb_auth_key', null, -1, '/');
-	setcookie('wfmb_remToken', null, -1, '/');
-	setcookie('wfmb_loginCheck', null, -1, '/');
-	setcookie('wfmb_usr', null, -1, '/');
+	setcookie('wfmb_auth_key', '', -1, '/');
+	setcookie('wfmb_remToken', '', -1, '/');
+	setcookie('wfmb_loginCheck', '', -1, '/');
+	setcookie('wfmb_usr', '', -1, '/');
 }
 
 function saveLog($type, $moderator, $info, $logDB=FALSE){

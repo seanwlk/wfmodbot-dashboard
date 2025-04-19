@@ -26,11 +26,11 @@
   $sqlQuery = "SELECT warnings.id, warnings.discord_id, warnings.username, warnings.reason, warnings.date, users.name AS moderator
   FROM warnings
   LEFT JOIN users ON users.discord_id = warnings.moderator 
-  WHERE guild = ".$MODERATED_GUILD.
-  (isset($_GET['user']) ? ' AND warnings.discord_id = ? ' : ' AND warnings.discord_id IS NOT ? ')
+  WHERE guild = '$MODERATED_GUILD' ".
+  (isset($_GET['user']) ? ' AND warnings.discord_id = ? ' : ' AND 1 = ? ')
   ."ORDER BY id DESC";
   $r = $db->prepare($sqlQuery);
-  $r->execute([$_GET['user'] ]);
+  $r->execute([isset($_GET['user']) ? $_GET['user'] : 1 ]);
 
   $warnings = $r->fetchAll(PDO::FETCH_ASSOC);
 ?>

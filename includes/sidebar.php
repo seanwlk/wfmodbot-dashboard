@@ -17,7 +17,7 @@
         <?php 
           $guildsAvailable = fastFetch($db,"SELECT managedguilds.guild,managedguilds.name FROM userguildaccess 
           LEFT JOIN managedguilds ON managedguilds.guild = userguildaccess.guild
-          WHERE userguildaccess.discord_id = ".(isset($_SESSION['wfmb_admin_dID']) ? $_SESSION['wfmb_admin_dID'] : '0'),'fetchall');
+          WHERE userguildaccess.discord_id = '".(isset($_SESSION['wfmb_admin_dID']) ? $_SESSION['wfmb_admin_dID'] : '0')."'",'fetchall');
           foreach ($guildsAvailable as $guild) {
             echo '<a href="switchGuild.php?guildID='.$guild['guild'].'" class="app-subitem '.(isset($_SESSION["wfmb_currentGuild"]) && $_SESSION["wfmb_currentGuild"] == $guild['guild'] ? 'active' : '').'">'.$guild['name'].'</a>';
           }?>
