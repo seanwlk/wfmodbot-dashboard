@@ -37,23 +37,21 @@ function checkPerms($required){
 
 function secsToDHMS($seconds) {
   $d = floor($seconds / 86400);
-  $remaining = $seconds - $d * 86400;
-  
-  $h = floor($seconds / 3600);
-  $remaining = $seconds - $h * 3600;
+  $remaining = $seconds % 86400;
+
+  $h = floor($remaining / 3600);
+  $remaining %= 3600;
 
   $m = floor($remaining / 60);
-  $remaining = $remaining - $m * 60;
+  $s = $remaining % 60;
 
-  $s = round($remaining, 3); 
   $s = number_format($s, 3, '.', '');
-
+  
   $h = str_pad($h, 2, '0', STR_PAD_LEFT);
   $m = str_pad($m, 2, '0', STR_PAD_LEFT);
   $s = str_pad($s, 2, '0', STR_PAD_LEFT);
 
-  $out = $d . "d " . $h . "h " . $m . "m " . (int) $s . "s";
-  return $out;
+  return "{$d}d {$h}h {$m}m " . (int)$s . "s";
 }
 
 function clearAuthCookie() {
